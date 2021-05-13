@@ -3,8 +3,6 @@
 ini_set("display_errors", 1);
 error_reporting(E_ERROR);
 
-ini_set('ignore_repeated_errors', 'On');
-
 session_start();
 
 if (in_array($_SESSION['Logged_StaffId'], array(11111111, 11119999)) && false) {
