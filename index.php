@@ -10,9 +10,9 @@ if (!session_id()) {
     session_start();
 }
 $ajax = ( isset($_POST['ajax']) ) ? true : false;
-$redirect_to_cabinet = true; // if user is already logged => redirect to cabinet
-$result = array();
-$result['error'] = 'error';
+// $redirect_to_cabinet = true; // if user is already logged => redirect to cabinet
+// $result = array();
+// $result['error'] = 'error';
 // $actionHistoryObj = new ActionHistoryObj();
 
 if (isset($_POST['login']) && isset($_POST['password'])) {
