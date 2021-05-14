@@ -94,7 +94,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
     } else {
         $actionHistoryObj->save('StaffObj', $STAFF->Id, 'login', 'login', '', 'error', 'incorrect password, IP:' . $ip);
         $redirect_to_cabinet = false;
-        $result['error'] = '��?���̧�?��?��?��?���̧�?��?��?��?���� ��?���㧳?��?��?��? ���ק�?���� ��?��?��?���ק�?';
+        $result['error'] = 'error';
     }
 } else {
     $redirect_to_cabinet = false;

@@ -1,0 +1,55 @@
+ html, body {
+		height: 100%;
+		position: relative;
+		
+	}
+	body {
+		background-image: linear-gradient(bottom, rgb(60,70,90) 29%, rgb(255,255,255) 65%);
+		background-image: -o-linear-gradient(bottom, rgb(60,70,90) 29%, rgb(255,255,255) 65%);
+		background-image: -moz-linear-gradient(bottom, rgb(60,70,90) 29%, rgb(255,255,255) 65%);
+		background-image: -webkit-linear-gradient(bottom, rgb(60,70,90) 29%, rgb(255,255,255) 65%);
+		background-image: -ms-linear-gradient(bottom, rgb(60,70,90) 29%, rgb(255,255,255) 65%);
+		
+		background-image: -webkit-gradient(
+			linear,
+			left bottom,
+			left top,
+			color-stop(0.29, rgb(60,70,90)),
+			color-stop(0.65, rgb(255,255,255))
+		);
+		background-repeat: no-repeat;
+	}
+	#login_form, #register_form {
+		width: 350px;
+		margin: 0 auto !important;
+	}
+	#login_form, #register_form  > h1 {
+		color: #000000;
+		font-size: 18px;
+		font-weight: normal;
+		margin: 0 0 1px 0;
+	}
+	#login_form > p {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 13px;
+		color: #5E5C5A;
+		margin: 0 0 15px 0;
+	}
+	#register_form {
+		visibility: hidden;
+	}
+	#child,#child2,#child3{
+		vertical-align:bottom; /* вот она */
+		text-align: center;
+		height: 60px; /* высота подвала */
+		margin-top: -60px; /* делаем отрицательный отступ по высоте равный высоте подвла, чтобы четко вписаться в размер экрана */
+	}
+	.main { /* основной блок, который должен растянуться до подвала */
+	min-height: 100%; /* задаем минимальную высоту основного блока */
+	}
+	html .main { /* хак для ie6 */
+		height: 100%; /* для ие6, т.к. не понимает min-height */
+	}
+	.hFooter { /* это распорка в основном блоке - резервируем место для подвала */
+		height: 90px; /* высота нашего подвала */
+	}
