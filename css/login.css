@@ -213,4 +213,7 @@ input {
 	.mySVG{
 		height: 80%;
 	}
+	.form.login{
+		width: 100%;
+	}
 }
