@@ -214,6 +214,9 @@ input {
 		height: 80%;
 	}
 	.form.login{
-		width: 100%;
+		width: 94%;
+	}
+	.login .label.label--icon{
+		display: none;
 	}
 }
