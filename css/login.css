@@ -216,7 +216,13 @@ input {
 	.form.login{
 		width: 94%;
 	}
+	.form__input-wrapper{
+		border: solid #9fd8f1;
+	}
 	.login .label.label--icon{
+		display: none;
+	}
+	.underline{
 		display: none;
 	}
 }
