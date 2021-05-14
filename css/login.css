@@ -250,5 +250,18 @@ input {
 		width: 100%;
 		text-align: right;
 	}
-
+	
+}
+@media only screen and (max-width: 600px) {
+	.login-container{
+		justify-content:unset;
+	}
+	.cartoon-container{
+		margin: 0;
+		max-height: 50vh;
+		text-align: center;
+	}
+	.mySVG{
+		height: 80%;
+	}
 }
