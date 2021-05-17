@@ -46,9 +46,7 @@ $(function() {
             {
                 dataField: "id",
                 caption: "id",
-                headerFilter: {
-                    groupInterval: 1000
-                }
+                sortOrder: "desc",
             },
             {
                 dataField: "fio",
