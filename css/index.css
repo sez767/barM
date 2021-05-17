@@ -1,0 +1,30 @@
+body{
+  margin: 0;
+}
+.dx-overlay-content {
+  background-color: rgb(215, 215, 215);
+}
+#toolbar {
+  background-color: rgba(220, 246, 255, 0.606);
+  padding: 5px 10px;
+}
+.dx-toolbar-button .dx-button {
+  background-color: rgba(191, 191, 191, -0.15);
+  border: none;
+}
+.dx-toolbar-button > .dx-toolbar-item-content {
+  margin-left: -7px;
+}
+.dx-list-item-icon {
+  margin-right: 10px;
+}
+#view {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.dx-drawer-panel-content{
+  background-color:rgba(220, 246, 255, 0.606);
+}
+#gridContainer {
+  height: 90vh;
+}
