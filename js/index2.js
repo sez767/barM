@@ -4,7 +4,7 @@ $(function() {
             dataSource: {
                 store: {
                     type: "odata",
-                    url: "https://js.devexpress.com/Demos/SalesViewer/odata/DaySaleDtoes",
+                    url: '/handlers/get_menu_obzvon.php',
                 //     beforeSend: function(request) {
                 //         request.params.startDate = "2020-05-10";
                 //         request.params.endDate = "2020-05-25";
