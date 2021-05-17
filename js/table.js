@@ -37,11 +37,12 @@ $(function() {
             preloadEnabled: true,
             showScrollbar: 'always'
         },
-        height: '500px',
+        height: '600px',
         columns: [
             {
                 dataField: "id",
                 caption: "id",
+                width: "100px"
 
             },
             {
