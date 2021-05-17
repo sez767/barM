@@ -33,7 +33,9 @@ $(function() {
         rowAlternationEnabled: true,
         showBorders: true,
         scrolling: {
-            mode: "virtual",
+            mode: 'virtual',
+            preloadEnabled: true,
+            showScrollbar: 'always'
         },
         
         columns: [
