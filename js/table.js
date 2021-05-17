@@ -25,7 +25,7 @@ $(function() {
             visible: true,
             highlightCaseSensitive: true
         },
-        groupPanel: { visible: true },
+        groupPanel: { visible: false},
         grouping: {
             autoExpandAll: false
         },
@@ -88,24 +88,7 @@ $(function() {
                 dataType: "string",
                 hidingPriority: 1
             },
-            {
-                dataField: "Sector",
-                caption: "Вид",
-                dataType: "string",
-                hidingPriority: 3
-            },
-            {
-                dataField: "Channel",
-                caption: "Канал",
-                dataType: "string",
-                hidingPriority: 2
-            },
-            {
-                dataField: "Customer",
-                caption: "Клиент",
-                dataType: "string",
-                width: 150
-            }
+  
         ],
         onContentReady: function(e) {
             if(!collapsed) {
