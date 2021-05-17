@@ -1,19 +1,19 @@
 DevExpress.localization.locale(navigator.language);
 $(function() {
     $("#gridCon").dxDataGrid({
-        // dataSource: {
-        //     store: {
-        //         type: "odata",
-        //         url: '/handlers/get_menu_obzvon.php',
-        //         // beforeSend: function(request) {
-        //         //     request.params.startDate = "2020-05-10";
-        //         // }
-        //     }
-        // },
-        dataSource: DevExpress.data.AspNet.createStore({
-            key: "id",
-            loadUrl: "/handlers/get_menu_obzvon.php"
-        }),
+        dataSource: {
+            store: {
+                type: "odata",
+                url: '/handlers/get_menu_obzvon.php',
+                // beforeSend: function(request) {
+                //     request.params.startDate = "2020-05-10";
+                // }
+            }
+        },
+        // dataSource: DevExpress.data.AspNet.createStore({
+        //     key: "id",
+        //     loadUrl: "/handlers/get_menu_obzvon.php"
+        // }),
         paging: {
             pageSize: 10
         },
