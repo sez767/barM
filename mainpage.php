@@ -5,10 +5,10 @@ header("Content-Type: text/html; charset=utf-8");
 session_set_cookie_params(10800);
 session_start();
 var_dump($_SESSION);
-if (!isset($_SESSION['Logged_StaffId'])) {
-    header('location: /login.html');
-    die();
-}
+// if (!isset($_SESSION['Logged_StaffId'])) {
+//     header('location: /login.html');
+//     die();
+// }
 require_once dirname(__FILE__) . '/lib/db.php';
 
 $ukr_ar = array('11111111','77777777', '26823714', '37239410', '30224289', '30356360', '76488859', '79319411', '47671128', '72480483', '80911164', '21630264', '44440873', '62443980', '77767205', '10578031');
