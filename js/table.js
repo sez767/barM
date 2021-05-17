@@ -59,15 +59,13 @@ $(function() {
                 caption: "id",
             },
             {
-                dataField: "Product",
-                caption: "Товар",
+                dataField: "fio",
+                caption: "ФИО",
             },
             {
-                dataField: "Amount",
-                caption: "Цена",
+                dataField: "phone",
+                caption: "Телефон",
                 dataType: "number",
-                format: "currency",
-                alignment: "right",
             },
             {
                 dataField: "Discount",
