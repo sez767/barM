@@ -23,9 +23,6 @@ $(function() {
             sorting: {
                 mode: "none"
             },
-            onContentReady: function(e) {
-                e.component.option("loadPanel.enabled", false);
-            },
         columns: [
             {
                 dataField: "id",
