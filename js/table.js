@@ -10,9 +10,9 @@ $(function() {
                 // }
             }
         },
-        // paging: {
-        //     pageSize: 10
-        // },
+        paging: {
+            pageSize: 10
+        },
         headerFilter: {
             visible: true
         },
