@@ -11,9 +11,6 @@ $(function() {
             }
         },
         showBorders: true,
-            customizeColumns: function (columns) {
-                columns[0].width = 70;
-            },
             loadPanel: {
                 enabled: true
             },
