@@ -242,8 +242,8 @@ if (!empty($_GET['id'])) {
     $dobrikUseWhere = false;
 
     // collect request parameters
-    $start = (int) isset($_REQUEST['start']) ? $_REQUEST['start'] : 0;
-    $count = (int) isset($_REQUEST['limit']) ? $_REQUEST['limit'] : 200;
+    $start = (int) isset($_REQUEST['skip']) ? $_REQUEST['skip'] : 0;
+    $count = (int) isset($_REQUEST['take']) ? $_REQUEST['take'] : 100;
     $sort = isset($_REQUEST['sort']) ? $_REQUEST['sort'] : '';
     $dir = isset($_REQUEST['dir']) ? $_REQUEST['dir'] : 'DESC';
     $filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
