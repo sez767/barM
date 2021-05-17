@@ -243,7 +243,7 @@ if (!empty($_GET['id'])) {
 
     // collect request parameters
     $start = (int) isset($_REQUEST['start']) ? $_REQUEST['start'] : 0;
-    $count = (int) isset($_REQUEST['limit']) ? $_REQUEST['limit'] : 100;
+    $count = (int) isset($_REQUEST['limit']) ? $_REQUEST['limit'] : 10000;
     $sort = isset($_REQUEST['sort']) ? $_REQUEST['sort'] : '';
     $dir = isset($_REQUEST['dir']) ? $_REQUEST['dir'] : 'DESC';
     $filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
