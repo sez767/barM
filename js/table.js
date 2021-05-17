@@ -5,9 +5,6 @@ $(function() {
         //     store: {
         //         type: "odata",
         //         url: '/handlers/get_menu_obzvon.php',
-        //         // beforeSend: function(request) {
-        //         //     request.params.startDate = "2020-05-10";
-        //         // }
         //     }
         // },
         dataSource: DevExpress.data.AspNet.createStore({
@@ -32,9 +29,6 @@ $(function() {
             highlightCaseSensitive: true
         },
         groupPanel: { visible: true},
-        grouping: {
-            autoExpandAll: false
-        },
         allowColumnReordering: true,
         rowAlternationEnabled: true,
         showBorders: true,
