@@ -6,7 +6,7 @@ error_reporting(E_ERROR);
  */
 header('Content-Type: application/json; charset=utf-8', true);
 session_start();
-var_dump($_REQUEST);
+// var_dump($_REQUEST);
 $time_1 = microtime(true);
 
 if (!isset($_SESSION['Logged_StaffId'])) {
