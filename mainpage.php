@@ -4,7 +4,7 @@ header("Content-Type: text/html; charset=utf-8");
 
 session_set_cookie_params(10800);
 session_start();
-var_dump($_SESSION);
+// var_dump($_SESSION);
 // if (!isset($_SESSION['Logged_StaffId'])) {
 //     header('location: /login.html');
 //     die();
