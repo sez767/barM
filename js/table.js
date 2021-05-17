@@ -37,7 +37,8 @@ $(function() {
         rowAlternationEnabled: true,
         showBorders: true,
         scrolling: {
-            mode: 'infinite'
+            mode: "virtual",
+            rowRenderingMode: "virtual"
         },
         sorting: {
             mode: "none"
