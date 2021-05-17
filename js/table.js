@@ -10,16 +10,16 @@ $(function() {
                 // }
             }
         },
-        paging: {
-            pageSize: 10
-        },
+        // paging: {
+        //     pageSize: 10
+        // },
         headerFilter: {
             visible: true
         },
-        pager: {
-            showPageSizeSelector: true,
-            allowedPageSizes: [10, 25, 50, 100]
-        },
+        // pager: {
+        //     showPageSizeSelector: true,
+        //     allowedPageSizes: [10, 25, 50, 100]
+        // },
         remoteOperations: false,
         searchPanel: {
             visible: true,
@@ -32,7 +32,12 @@ $(function() {
         allowColumnReordering: true,
         rowAlternationEnabled: true,
         showBorders: true,
-
+        scrolling: {
+            mode: "virtual"
+        },
+        sorting: {
+            mode: "none"
+        },
         export: {
             enabled: true,
             allowExportSelectedData: true
