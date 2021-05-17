@@ -22,8 +22,6 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
     $PasswordMD5 = md5($_POST['password']);
     $STAFF = new Staff($Login);
     $ip = $_SERVER['REMOTE_ADDR'];
-    $_SESSION['Logged_StaffId'] = '111111111';
-    var_dump($_SESSION);
 
     if ($STAFF->Password == $PasswordMD5 && (int)$STAFF->Type) {
         $_SESSION['Logged_StaffId'] = $STAFF->Id;
