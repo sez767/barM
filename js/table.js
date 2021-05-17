@@ -10,53 +10,22 @@ $(function() {
                 // }
             }
         },
-        // paging: {
-        //     pageSize: 10
-        // },
-        headerFilter: {
-            visible: true
-        },
-        // pager: {
-        //     showPageSizeSelector: true,
-        //     allowedPageSizes: [10, 25, 50, 100]
-        // },
-        remoteOperations: false,
-        searchPanel: {
-            visible: true,
-            highlightCaseSensitive: true
-        },
-        groupPanel: { visible: true },
-        grouping: {
-            autoExpandAll: false
-        },
-        allowColumnReordering: true,
-        rowAlternationEnabled: true,
         showBorders: true,
-        scrolling: {
-            mode: "virtual"
-        },
-        sorting: {
-            mode: "none"
-        },
-        export: {
-            enabled: true,
-            allowExportSelectedData: true
-          },
-          onExporting: function(e) {
-            var workbook = new ExcelJS.Workbook();
-            var worksheet = workbook.addWorksheet('Employees');
-            
-            DevExpress.excelExporter.exportDataGrid({
-              component: e.component,
-              worksheet: worksheet,
-              autoFilterEnabled: true
-            }).then(function() {
-              workbook.xlsx.writeBuffer().then(function(buffer) {
-                saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Employees.xlsx');
-              });
-            });
-            e.cancel = true;
-          },
+            customizeColumns: function (columns) {
+                columns[0].width = 70;
+            },
+            loadPanel: {
+                enabled: true
+            },
+            scrolling: {
+                mode: "virtual"
+            },
+            sorting: {
+                mode: "none"
+            },
+            onContentReady: function(e) {
+                e.component.option("loadPanel.enabled", false);
+            },
         columns: [
             {
                 dataField: "id",
