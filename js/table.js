@@ -20,15 +20,15 @@ $(function() {
         //     showPageSizeSelector: true,
         //     allowedPageSizes: [10, 25, 50, 100]
         // },
-        // remoteOperations: false,
+        remoteOperations: false,
         searchPanel: {
             visible: true,
             highlightCaseSensitive: true
         },
-        // groupPanel: { visible: true },
-        // grouping: {
-        //     autoExpandAll: false
-        // },
+        groupPanel: { visible: true },
+        grouping: {
+            autoExpandAll: false
+        },
         allowColumnReordering: true,
         rowAlternationEnabled: true,
         showBorders: true,
@@ -38,6 +38,25 @@ $(function() {
         sorting: {
             mode: "none"
         },
+        export: {
+            enabled: true,
+            allowExportSelectedData: true
+          },
+          onExporting: function(e) {
+            var workbook = new ExcelJS.Workbook();
+            var worksheet = workbook.addWorksheet('Employees');
+            
+            DevExpress.excelExporter.exportDataGrid({
+              component: e.component,
+              worksheet: worksheet,
+              autoFilterEnabled: true
+            }).then(function() {
+              workbook.xlsx.writeBuffer().then(function(buffer) {
+                saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Employees.xlsx');
+              });
+            });
+            e.cancel = true;
+          },
         columns: [
             {
                 dataField: "id",
@@ -69,6 +88,24 @@ $(function() {
                 dataType: "string",
                 hidingPriority: 1
             },
+            {
+                dataField: "Sector",
+                caption: "Вид",
+                dataType: "string",
+                hidingPriority: 3
+            },
+            {
+                dataField: "Channel",
+                caption: "Канал",
+                dataType: "string",
+                hidingPriority: 2
+            },
+            {
+                dataField: "Customer",
+                caption: "Клиент",
+                dataType: "string",
+                width: 150
+            }
         ],
         onContentReady: function(e) {
             if(!collapsed) {
@@ -78,5 +115,36 @@ $(function() {
         }
     });
 });
+
+var discountCellTemplate = function(container, options) {
+    $("<div/>").dxBullet({
+        onIncidentOccurred: null,
+        size: {
+            width: 150,
+            height: 35
+        },
+        margin: {
+            top: 5,
+            bottom: 0,
+            left: 5
+        },
+        showTarget: false,
+        showZeroLevel: true,
+        value: options.value * 100,
+        startScaleValue: 0,
+        endScaleValue: 100,
+        tooltip: {
+            enabled: true,
+            font: {
+                size: 18
+            },
+            paddingTopBottom: 2,
+            customizeTooltip: function() {
+                return { text: options.text };
+            },
+            zIndex: 5
+        }
+    }).appendTo(container);
+};
 
 var collapsed = false;
