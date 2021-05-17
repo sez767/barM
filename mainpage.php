@@ -215,7 +215,7 @@ if ($_SESSION['whatsappoperator'] && isset($_COOKIE['WhatsAppDialogs'])){
         <script type="text/javascript" src="js/dx.all.js"></script>
         <!-- <script type="text/javascript" src="js/dx.messages.ru.js"></script> -->
         <script type="text/javascript" src="js/mainpage.js"></script>
-        <!-- <script src="https://unpkg.com/devextreme-aspnet-data/js/dx.aspnet.data.js"></script> -->
+        <script src="https://unpkg.com/devextreme-aspnet-data/js/dx.aspnet.data.js"></script>
     </head>
     <body class="dx-viewport">
         <div class="demo-container">
