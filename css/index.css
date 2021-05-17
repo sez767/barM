@@ -1,11 +1,11 @@
-/* body{
+body{
   margin: 0;
 }
 .dx-overlay-content {
-  background-color: rgb(215, 215, 215);
+  /* background-color: rgb(215, 215, 215); */
 }
 #toolbar {
-  background-color: rgba(220, 246, 255, 0.606);
+  /* background-color: rgba(220, 246, 255, 0.606); */
   padding: 5px 10px;
 }
 .dx-toolbar-button .dx-button {
@@ -25,6 +25,9 @@
 .dx-drawer-panel-content{
   background-color:rgba(220, 246, 255, 0.606);
 }
+.dx-drawer-wrapper{
+  height: auto;
+}
 /* #gridContainer {
   height: 90vh;
-} */ */
+} */
