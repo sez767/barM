@@ -2,14 +2,10 @@
 
 ini_set("display_errors", 0);
 error_reporting(0);
-
 ini_set('ignore_repeated_errors', 'On');
 
 session_start();
 
-if (in_array($_SESSION['Logged_StaffId'], array(11111111, 11119999)) && false) {
-    error_reporting(E_ALL & ~(E_NOTICE | E_WARNING | E_STRICT));
-}
 
 require_once dirname(__FILE__) . '/../ini/Application.php';
 
