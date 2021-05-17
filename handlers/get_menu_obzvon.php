@@ -434,7 +434,7 @@ if (!empty($_GET['id'])) {
 //    if ($sort != "") {
 //         $query .= " ORDER BY `" . $sort . "` " . $dir;
 //     } else {
-        $query .= " ORDER BY `date` DESC ";
+        // $query .= " ORDER BY `date` DESC ";
     // }
     $query .= " LIMIT $start, $count";
 
