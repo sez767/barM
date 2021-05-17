@@ -41,7 +41,7 @@ $(function() {
         },
         sorting: {
             mode: "none"
-        }
+        },
         
         columns: [
             {
