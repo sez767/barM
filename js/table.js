@@ -68,15 +68,9 @@ $(function() {
                 dataType: "number",
             },
             {
-                dataField: "Discount",
-                caption: "Скидка %",
-                dataType: "number",
-                format: "percent",
-                alignment: "right",
-                allowGrouping: false,
-                cellTemplate: discountCellTemplate,
-                cssClass: "bullet",
-                hidingPriority: 0
+                dataField: "addr",
+                caption: "Адрес",
+
             },
             {
                 dataField: "SaleDate",
