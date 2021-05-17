@@ -247,8 +247,8 @@ if (!empty($_GET['id'])) {
     $sort = isset($_REQUEST['sort']) ? $_REQUEST['sort'] : '';
     $dir = isset($_REQUEST['dir']) ? $_REQUEST['dir'] : 'DESC';
     $filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
-    $sort = my_mysqli_real_escape_string($sort);
-    $dir = my_mysqli_real_escape_string($dir);
+    // $sort = my_mysqli_real_escape_string($sort);
+    // $dir = my_mysqli_real_escape_string($dir);
     // GridFilters sends filters as an Array if not json encoded
     if (is_array($filters)) {
         $encoded = false;
