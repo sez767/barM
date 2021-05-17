@@ -22,12 +22,8 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
     $PasswordMD5 = md5($_POST['password']);
     $STAFF = new Staff($Login);
     $ip = $_SERVER['REMOTE_ADDR'];
-    // var_dump($_SESSION['captcha_keystring']); die;
-    //if (isset($_SESSION['captcha_keystring']) && $_SESSION['captcha_keystring'] == $_POST['CAPTCHA'] ) {
 
     if ($STAFF->Password == $PasswordMD5 && (int)$STAFF->Type) {
-        //var_dump($_SESSION); die;
-        //if(!$STAFF->Ban){
         $_SESSION['Logged_StaffId'] = $STAFF->Id;
         $_SESSION['Logged_Group'] = (int) $STAFF->Group;
         $_SESSION['Logged_StaffName'] = trim("$STAFF->FirstName $STAFF->LastName");
@@ -42,7 +38,6 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
         $_SESSION['IsResponsible'] = (int) $STAFF->IsResponsible;
         $_SESSION['IsCurator'] = (int) $STAFF->IsCurator;
         $_SESSION['IsPost'] = (int) $STAFF->IsPost;
-        // ��?��?��?����
         $_SESSION['admin'] = $STAFF->admin;
         $_SESSION['logist'] = $STAFF->logist;
         $_SESSION['logistcity'] = $STAFF->logistcity;
@@ -119,7 +114,7 @@ if ($redirect_to_cabinet) {
         </script> <?php
         die();
     }
-    header("location: /account.php");
+    header("location: /mainpage.php");
 } else {
     //var_dump($ajax); die;
     if ($ajax) {

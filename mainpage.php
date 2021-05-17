@@ -4,10 +4,11 @@ header("Content-Type: text/html; charset=utf-8");
 
 session_set_cookie_params(10800);
 session_start();
-if (!isset($_SESSION['Logged_StaffId'])) {
-    header('location: /login.html');
-    die();
-}
+echo $_SESSION['Logged_StaffId'];
+// if (!isset($_SESSION['Logged_StaffId'])) {
+//     header('location: /login.html');
+//     die();
+// }
 require_once dirname(__FILE__) . '/lib/db.php';
 ?>
 <html>
