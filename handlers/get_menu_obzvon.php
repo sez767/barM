@@ -243,7 +243,7 @@ if (!empty($_GET['id'])) {
 
     // collect request parameters
     $start = (int) isset($_REQUEST['skip']) ? $_REQUEST['skip'] : 0;
-    $count = (int) isset($_REQUEST['take']) ? $_REQUEST['take'] : 10;
+    $count = (int) isset($_REQUEST['take']) ? $_REQUEST['take'] : 100;
     $sort = isset($_REQUEST['sort']) ? $_REQUEST['sort'] : '';
     $dir = isset($_REQUEST['dir']) ? $_REQUEST['dir'] : 'DESC';
     $filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
@@ -431,11 +431,11 @@ if (!empty($_GET['id'])) {
     $queryTotal = "SELECT COUNT(id) AS obzvon_total FROM staff_order WHERE country IN (" . $_SESSION['country'] . ") $all_in_condition AND $where $str_add";
     $queryTotal = "SELECT FOUND_ROWS() AS obzvon_total ";
 
-//    if ($sort != "") {
-//         $query .= " ORDER BY `" . $sort . "` " . $dir;
-//     } else {
-        // $query .= " ORDER BY `date` DESC ";
-    // }
+   /* if ($sort != "") {
+        $query .= " ORDER BY `" . $sort . "` " . $dir;
+    } else {
+        $query .= " ORDER BY `date` DESC ";
+    }*/
     $query .= " LIMIT $start, $count";
 
     ApiLogger::addLogVarExport('START');

@@ -38,15 +38,15 @@ $(function() {
         allowColumnReordering: true,
         rowAlternationEnabled: true,
         showBorders: true,
-        // scrolling: {
-        //     mode: "virtual",
-        // },
+        scrolling: {
+            mode: "virtual",
+        },
         
         columns: [
             {
                 dataField: "id",
                 caption: "id",
-                sortOrder: "desc",
+
             },
             {
                 dataField: "fio",
