@@ -37,7 +37,7 @@ $(function() {
             preloadEnabled: true,
             showScrollbar: 'always'
         },
-        
+        height: '500px',
         columns: [
             {
                 dataField: "id",
