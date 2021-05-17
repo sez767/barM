@@ -1,11 +1,10 @@
 <?php
 
-error_reporting(0);
-@ini_set('display_errors', 0);
-
 header('Content-Type: text/html; charset=utf-8');
+
 require_once (dirname(__FILE__) . "/lib/db.php");
 require_once (dirname(__FILE__) . "/lib/class.staff.php");
+
 session_set_cookie_params(0, '/', '', true, true);
 if (!session_id()) {
     session_start();
@@ -14,7 +13,7 @@ $ajax = ( isset($_POST['ajax']) ) ? true : false;
 $redirect_to_cabinet = true; // if user is already logged => redirect to cabinet
 $result = array();
 $result['error'] = 'error';
-// $actionHistoryObj = new ActionHistoryObj();
+$actionHistoryObj = new ActionHistoryObj();
 
 if (isset($_POST['login']) && isset($_POST['password'])) {
 
