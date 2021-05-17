@@ -14,15 +14,17 @@ $(function() {
             key: "id",
             loadUrl: "/handlers/get_menu_obzvon.php"
         }),
-        paging: {
-            pageSize: 10
-        },
+        
         headerFilter: {
             visible: true
         },
+        paging: {
+            pageSize: 10
+        },
         pager: {
             showPageSizeSelector: true,
-            allowedPageSizes: [10, 25, 50, 100]
+            allowedPageSizes: [10, 20, 50],
+            showInfo: true
         },
         remoteOperations: true,
         searchPanel: {
@@ -36,9 +38,9 @@ $(function() {
         allowColumnReordering: true,
         rowAlternationEnabled: true,
         showBorders: true,
-        scrolling: {
-            mode: "virtual",
-        },
+        // scrolling: {
+        //     mode: "virtual",
+        // },
         
         columns: [
             {
