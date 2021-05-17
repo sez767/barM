@@ -11,32 +11,20 @@ $(function() {
             key: "id",
             loadUrl: "/handlers/get_menu_obzvon.php"
         }),
-        
-        headerFilter: {
-            visible: true
+        remoteOperations: true,
+        scrolling: {
+            mode: "virtual",
+            rowRenderingMode: "virtual"
         },
         paging: {
-            pageSize: 10
+            pageSize: 100
         },
-        pager: {
-            showPageSizeSelector: true,
-            allowedPageSizes: [10, 20, 50],
-            showInfo: true
-        },
-        remoteOperations: true,
-        searchPanel: {
+        headerFilter: {
             visible: true,
-            highlightCaseSensitive: true
+            allowSearch: true
         },
-        groupPanel: { visible: true},
-        allowColumnReordering: true,
-        rowAlternationEnabled: true,
+        wordWrapEnabled: true,
         showBorders: true,
-        scrolling: {
-            mode: 'virtual',
-            preloadEnabled: true,
-            showScrollbar: 'always'
-        },
         height: '600px',
         columns: [
             {
