@@ -4,16 +4,16 @@
  * Обзвон
  */
 header('Content-Type: application/json; charset=utf-8', true);
-// session_start();
+session_start();
 
-// $time_1 = microtime(true);
+$time_1 = microtime(true);
 
-// if (!isset($_SESSION['Logged_StaffId'])) {
-//     die(json_encode(array(
-//         'success' => false,
-//         'msg' => 'Permission denied'
-//     )));
-// }
+if (!isset($_SESSION['Logged_StaffId'])) {
+    die(json_encode(array(
+        'success' => false,
+        'msg' => 'Permission denied'
+    )));
+}
 
 require_once dirname(__FILE__) . '/../lib/db.php';
 require_once dirname(__FILE__) . '/../lib/class.staff.php';
