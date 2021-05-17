@@ -220,7 +220,7 @@ if ($_SESSION['whatsappoperator'] && isset($_COOKIE['WhatsAppDialogs'])){
         <div class="demo-container">
         <div id="toolbar"></div>
         <div id="drawer">
-            <div id="view" class="dx-theme-background-color"></div>
+            <div id="view"></div>
         </div>
         </div>
     </body>

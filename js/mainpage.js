@@ -27,7 +27,7 @@ $(function() {
    
                 ],
                 width: 200,
-                height: "93vh",
+                
                 selectionMode: "single",
                 onSelectionChanged: function(e) {
                     $("#view").load( "./pages/" + e.addedItems[0].filePath + ".html" );
