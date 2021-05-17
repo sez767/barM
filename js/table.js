@@ -10,16 +10,34 @@ $(function() {
                 // }
             }
         },
+        // paging: {
+        //     pageSize: 10
+        // },
+        headerFilter: {
+            visible: true
+        },
+        // pager: {
+        //     showPageSizeSelector: true,
+        //     allowedPageSizes: [10, 25, 50, 100]
+        // },
+        // remoteOperations: false,
+        searchPanel: {
+            visible: true,
+            highlightCaseSensitive: true
+        },
+        // groupPanel: { visible: true },
+        // grouping: {
+        //     autoExpandAll: false
+        // },
+        allowColumnReordering: true,
+        rowAlternationEnabled: true,
         showBorders: true,
-            loadPanel: {
-                enabled: true
-            },
-            scrolling: {
-                mode: "virtual"
-            },
-            sorting: {
-                mode: "none"
-            },
+        scrolling: {
+            mode: "virtual"
+        },
+        sorting: {
+            mode: "none"
+        },
         columns: [
             {
                 dataField: "id",
@@ -51,24 +69,6 @@ $(function() {
                 dataType: "string",
                 hidingPriority: 1
             },
-            {
-                dataField: "Sector",
-                caption: "Вид",
-                dataType: "string",
-                hidingPriority: 3
-            },
-            {
-                dataField: "Channel",
-                caption: "Канал",
-                dataType: "string",
-                hidingPriority: 2
-            },
-            {
-                dataField: "Customer",
-                caption: "Клиент",
-                dataType: "string",
-                width: 150
-            }
         ],
         onContentReady: function(e) {
             if(!collapsed) {
@@ -78,36 +78,5 @@ $(function() {
         }
     });
 });
-
-var discountCellTemplate = function(container, options) {
-    $("<div/>").dxBullet({
-        onIncidentOccurred: null,
-        size: {
-            width: 150,
-            height: 35
-        },
-        margin: {
-            top: 5,
-            bottom: 0,
-            left: 5
-        },
-        showTarget: false,
-        showZeroLevel: true,
-        value: options.value * 100,
-        startScaleValue: 0,
-        endScaleValue: 100,
-        tooltip: {
-            enabled: true,
-            font: {
-                size: 18
-            },
-            paddingTopBottom: 2,
-            customizeTooltip: function() {
-                return { text: options.text };
-            },
-            zIndex: 5
-        }
-    }).appendTo(container);
-};
 
 var collapsed = false;
