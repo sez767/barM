@@ -1,6 +1,6 @@
 DevExpress.localization.locale(navigator.language);
 $(function() {
-    $("#gridContainer").dxDataGrid({
+    $("#gridCon").dxDataGrid({
         dataSource: DevExpress.data.AspNet.createStore({
             key: "id",
             loadUrl: "/handlers/get_menu_obzvon.php"
