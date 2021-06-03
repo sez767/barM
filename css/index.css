@@ -25,9 +25,6 @@ body{
 .dx-drawer-panel-content{
   background-color:rgba(220, 246, 255, 0.606);
 }
-.dx-drawer-wrapper{
-  height: auto;
-}
 #gridContainer {
-  height: 80vh;
+  height: 90vh;
 }

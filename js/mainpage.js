@@ -15,7 +15,7 @@ $(function() {
     });
 
     const drawer = $("#drawer").dxDrawer({
-        minSize: 37,
+        minSize: 45,
         opened: true,
         revealMode: "expand",
         openedStateMode: "shrink",
