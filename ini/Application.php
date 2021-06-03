@@ -50,6 +50,7 @@ require_once dirname(__FILE__) . '/../vendor/autoload.php';
 require_once 'util.php';
 
 
+
 DB::$host = Application::getAppConfig()->db->hostname;
 DB::$dbName = Application::getAppConfig()->db->database;
 DB::$user = Application::getAppConfig()->db->username;

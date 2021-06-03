@@ -18,6 +18,11 @@ if (!isset($_SESSION['Logged_StaffId'])) {
 
 require_once dirname(__FILE__) . '/../lib/db.php';
 require_once dirname(__FILE__) . '/../lib/class.staff.php';
+require_once("../../DevExtreme/LoadHelper.php");
+spl_autoload_register(array("DevExtreme\LoadHelper", "LoadModule"));
+
+use DevExtreme\DbSet;
+use DevExtreme\DataSourceLoader;
 
 if (!empty($_GET['id'])) {
     $obj = array();
