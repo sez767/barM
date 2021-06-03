@@ -1,79 +1,46 @@
 DevExpress.localization.locale(navigator.language);
 $(function() {
-    $("#gridCon").dxDataGrid({
-        // dataSource: {
-        //     store: {
-        //         type: "odata",
-        //         url: '/handlers/get_menu_obzvon.php',
-        //     }
-        // },
+    $("#gridContainer").dxDataGrid({
         dataSource: DevExpress.data.AspNet.createStore({
             key: "id",
             loadUrl: "/handlers/get_menu_obzvon.php"
         }),
         remoteOperations: true,
-        filterRow: {
-            visible: true
+        scrolling: {
+            mode: "virtual",
+            rowRenderingMode: "virtual"
         },
         paging: {
-            pageSize: 20
+            pageSize: 100
         },
         headerFilter: {
-            visible: true
+            visible: true,
+            allowSearch: true
         },
-        groupPanel: {
-            visible: true
-        },
-        scrolling: {
-            rowRenderingMode: 'virtual'
-        },
-        height: 600,
+        wordWrapEnabled: true,
         showBorders: true,
-        grouping: {
-            autoExpandAll: false
-        },
-        columns: [
-            {
-                dataField: "id",
-                caption: "id",
-                width: "100px"
-
-            },
-            {
-                dataField: "fio",
-                caption: "ФИО",
-            },
-            {
-                dataField: "phone",
-                caption: "Телефон",
-                dataType: "number",
-            },
-            {
-                dataField: "addr",
-                caption: "Адрес",
-
-            },
-            {
-                dataField: "SaleDate",
-                caption: "Дата",
-                dataType: "date",
-                hidingPriority: 4
-            },
-            {
-                dataField: "Region",
-                caption: "Регион",
-                dataType: "string",
-                hidingPriority: 1
-            },
-  
-        ],
-        onContentReady: function(e) {
-            if(!collapsed) {
-                collapsed = true;
-                e.component.expandRow(["EnviroCare"]);
-            }
-        }
+        columns: [{
+            dataField: "Id",
+            width: 75
+        }, {
+            dataField: "fio",
+            caption: "ФИО",
+            width: 150
+        }, {
+            dataField: "phone",
+            caption: "Телефон",
+            dataType: "number",
+            width: 120
+        },{
+            dataField: "SaleDate",
+            caption: "Дата",
+            dataType: "date",
+            hidingPriority: 4,
+            format: "yyyy-MM-dd",
+            width: 100
+        }]
     });
 });
+
 
 var collapsed = false;
