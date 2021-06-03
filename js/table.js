@@ -21,6 +21,7 @@ $(function() {
         showBorders: true,
         columns: [{
             dataField: "Id",
+            caption: "ID",
             width: 75
         }, {
             dataField: "fio",
