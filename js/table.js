@@ -11,7 +11,7 @@ $(function() {
             rowRenderingMode: "virtual"
         },
         paging: {
-            pageSize: 100
+            pageSize: 25
         },
         headerFilter: {
             visible: true,
