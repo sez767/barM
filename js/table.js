@@ -12,20 +12,20 @@ $(function() {
             loadUrl: "/handlers/get_menu_obzvon.php"
         }),
         remoteOperations: true,
-        scrolling: {
-            mode: "virtual",
-            rowRenderingMode: "virtual"
-        },
-        paging: {
-            pageSize: 100
+        filterRow: {
+            visible: true
         },
         headerFilter: {
-            visible: true,
-            allowSearch: true
+            visible: true
         },
-        wordWrapEnabled: true,
+        groupPanel: {
+            visible: true
+        },
+        scrolling: {
+            mode: "virtual"
+        },
+        height: 600,
         showBorders: true,
-        height: '600px',
         columns: [
             {
                 dataField: "id",
