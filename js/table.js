@@ -28,11 +28,15 @@ $(function() {
             caption: "ФИО",
 
         }, {
+            dataField: "status",
+            caption: "Статус",
+            dataType: "number",
+        }, {
             dataField: "phone",
             caption: "Телефон",
             dataType: "number",
         },{
-            dataField: "SaleDate",
+            dataField: "date",
             caption: "Дата",
             dataType: "date",
             hidingPriority: 4,
