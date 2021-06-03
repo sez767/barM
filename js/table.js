@@ -26,11 +26,12 @@ $(function() {
         }, {
             dataField: "fio",
             caption: "ФИО",
-
+            width: 200
         }, {
             dataField: "status",
             caption: "Статус",
             dataType: "number",
+            width: 100
         }, {
             dataField: "phone",
             caption: "Телефон",
