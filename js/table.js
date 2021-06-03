@@ -20,25 +20,23 @@ $(function() {
         wordWrapEnabled: true,
         showBorders: true,
         columns: [{
-            dataField: "Id",
+            dataField: "id",
             caption: "ID",
-            width: 75
+            width: 100
         }, {
             dataField: "fio",
             caption: "ФИО",
-            width: 150
+
         }, {
             dataField: "phone",
             caption: "Телефон",
             dataType: "number",
-            width: 120
         },{
             dataField: "SaleDate",
             caption: "Дата",
             dataType: "date",
             hidingPriority: 4,
             format: "yyyy-MM-dd",
-            width: 100
         }]
     });
 });
