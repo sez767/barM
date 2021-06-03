@@ -25,7 +25,7 @@ $(function() {
             visible: true
         },
         scrolling: {
-            mode: "virtual"
+            rowRenderingMode: 'virtual'
         },
         height: 600,
         showBorders: true,
