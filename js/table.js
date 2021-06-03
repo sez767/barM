@@ -15,6 +15,9 @@ $(function() {
         filterRow: {
             visible: true
         },
+        paging: {
+            pageSize: 20
+        },
         headerFilter: {
             visible: true
         },
@@ -26,6 +29,9 @@ $(function() {
         },
         height: 600,
         showBorders: true,
+        grouping: {
+            autoExpandAll: false
+        },
         columns: [
             {
                 dataField: "id",
