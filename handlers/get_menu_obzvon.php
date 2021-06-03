@@ -245,7 +245,7 @@ if (!empty($_GET['id'])) {
     $start = (int) isset($_REQUEST['skip']) ? $_REQUEST['skip'] : 0;
     $count = (int) isset($_REQUEST['take']) ? $_REQUEST['take'] : 100;
     $sort = isset($_REQUEST['sort']) ? $_REQUEST['sort'] : '';
-    $dir = isset($_REQUEST['dir']) ? $_REQUEST['dir'] : 'DESC';
+    $dir = isset($_REQUEST['desc']) ? $_REQUEST['desc'] : 'DESC';
     $filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
     $sort = my_mysqli_real_escape_string($sort);
     $dir = my_mysqli_real_escape_string($dir);
