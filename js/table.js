@@ -41,7 +41,7 @@ $(function() {
             caption: "Дата",
             dataType: "date",
             hidingPriority: 4,
-            format: "yyyy-MM-dd",
+            format: "dd-MM-yyyy",
         }]
     });
 });
