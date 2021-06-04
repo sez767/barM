@@ -249,7 +249,7 @@ if (!empty($_GET['id'])) {
     $dir = 'DESC';
     // collect request parameters
     $start = (int) isset($_REQUEST['skip']) ? $_REQUEST['skip'] : 0;
-    $count = (int) isset($_REQUEST['take']) ? $_REQUEST['take'] : 100;
+    $count = (int) isset($_REQUEST['take']) ? $_REQUEST['take'] : 500;
     if(isset($_REQUEST['sort'])) {
         $presort = json_decode($_REQUEST['sort'], true);
         $sort = isset($presort['selector']) ? $presort['selector'] : '';
@@ -448,7 +448,7 @@ if (!empty($_GET['id'])) {
     $query .= " ORDER BY `date` DESC ";
     }
 
-    // $query .= " LIMIT $start, $count";
+    $query .= " LIMIT $start, $count";
 
     ApiLogger::addLogVarExport('START');
     ApiLogger::addLogVarExport($query);
