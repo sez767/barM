@@ -444,8 +444,9 @@ if (!empty($_GET['id'])) {
 
    if ($sort != "") {
         $query .= " ORDER BY `" . $sort . "` " . $dir;
+        var_dump($sort); 
     } else {
-       var_dump($sort); 
+    //    var_dump($sort); 
     
     $query .= " ORDER BY `date` DESC ";
     }
