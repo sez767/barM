@@ -1,62 +1,68 @@
 DevExpress.localization.locale(navigator.language);
 $(function() {
     $("#gridCon").dxDataGrid({
-        // dataSource: DevExpress.data.AspNet.createStore({
-        //     key: "id",
-        //     loadUrl: "/handlers/get_menu_obzvon.php"
-        // }),
-        // remoteOperations: true,
-        // scrolling: {
-        //     mode: "virtual",
-        //     rowRenderingMode: "virtual"
-        // },
-        // paging: {
-        //     pageSize: 25
-        // },
-        // headerFilter: {
-        //     visible: true,
-        //     allowSearch: true
-        // },
-        // wordWrapEnabled: true,
-        // showBorders: true,
-        dataSource: {
-            store: {
-                type: "odata",
-                url: "/handlers/get_menu_obzvon.php",
-               
-            }
+        dataSource: DevExpress.data.AspNet.createStore({
+            key: "id",
+            loadUrl: "/handlers/get_menu_obzvon.php"
+        }),
+        remoteOperations: true,
+        scrolling: {
+            mode: "virtual",
+            rowRenderingMode: "virtual"
         },
         paging: {
-            pageSize: 10
-        },
-        filterRow: {
-            visible: true,
-            applyFilter: "auto"
-        },
-        searchPanel: {
-            visible: true,
-            width: 240,
-            placeholder: "Search..."
+            pageSize: 25
         },
         headerFilter: {
-            visible: true
-        },
-        pager: {
-            showPageSizeSelector: true,
-            allowedPageSizes: [10, 25, 50, 100]
-        },
-        remoteOperations: false,
-        searchPanel: {
             visible: true,
-            highlightCaseSensitive: true
+            allowSearch: true
         },
-        groupPanel: { visible: true },
-        grouping: {
-            autoExpandAll: false
-        },
-        allowColumnReordering: true,
-        rowAlternationEnabled: true,
+        wordWrapEnabled: true,
         showBorders: true,
+
+
+
+        // dataSource: {
+        //     store: {
+        //         type: "odata",
+        //         url: "/handlers/get_menu_obzvon.php",
+        //     }
+        // },
+        // paging: {
+        //     pageSize: 10
+        // },
+        // filterRow: {
+        //     visible: true,
+        //     applyFilter: "auto"
+        // },
+        // searchPanel: {
+        //     visible: true,
+        //     width: 240,
+        //     placeholder: "Search..."
+        // },
+        // headerFilter: {
+        //     visible: true
+        // },
+        // pager: {
+        //     showPageSizeSelector: true,
+        //     allowedPageSizes: [10, 25, 50, 100]
+        // },
+        // remoteOperations: false,
+        // searchPanel: {
+        //     visible: true,
+        //     highlightCaseSensitive: true
+        // },
+        // groupPanel: { visible: true },
+        // grouping: {
+        //     autoExpandAll: false
+        // },
+        // allowColumnReordering: true,
+        // rowAlternationEnabled: true,
+        // showBorders: true,
+
+
+
+
         columns: [{
             dataField: "id",
             caption: "ID",
