@@ -37,3 +37,6 @@ body{
 .dx-toolbar .dx-toolbar-items-container{
   height: 40px;
 }
+.dx-drawer-shrink .dx-drawer-wrapper{
+  margin-right: .5rem;
+}
