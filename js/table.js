@@ -10,6 +10,9 @@ $(function() {
             mode: "virtual",
             rowRenderingMode: "virtual"
         },
+        paging: {
+            pageSize: 100
+        },
         headerFilter: {
             visible: true,
             allowSearch: true
