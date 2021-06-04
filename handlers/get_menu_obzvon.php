@@ -252,7 +252,7 @@ if (!empty($_GET['id'])) {
     $count = (int) isset($_REQUEST['take']) ? $_REQUEST['take'] : 200;
     if(isset($_REQUEST['sort'])) {
         $presort = json_decode($_REQUEST['sort']);
-        $sort = $presort['selector'];
+        $sort = $presort[0]['selector'];
         //  ? $presort['selector'] : 'date';
         $dir = ($presort['desc']=="true") ? 'DESC' : 'ASC';
     }
