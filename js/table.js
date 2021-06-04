@@ -16,9 +16,6 @@ $(function() {
         },
         wordWrapEnabled: true,
         showBorders: true,
-        paging: {
-            pageSize: 10
-        },
         filterRow: {
             visible: true,
             applyFilter: "auto"
@@ -30,10 +27,6 @@ $(function() {
         },
         headerFilter: {
             visible: true
-        },
-        pager: {
-            showPageSizeSelector: true,
-            allowedPageSizes: [10, 25, 50, 100]
         },
 
 
