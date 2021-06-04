@@ -249,28 +249,17 @@ if (!empty($_GET['id'])) {
     $dir = 'DESC';
     // collect request parameters
     $start = (int) isset($_REQUEST['skip']) ? $_REQUEST['skip'] : 0;
-    $count = (int) isset($_REQUEST['take']) ? $_REQUEST['take'] : 300;
+    $count = (int) isset($_REQUEST['take']) ? $_REQUEST['take'] : 200;
     if(isset($_REQUEST['sort'])) {
         $presort = json_decode($_REQUEST['sort'], true);
         $sort = isset($presort['selector']) ? $presort['selector'] : 'date';
-        $dir = ($presort['desc']=='true') ? 'DESC' : 'ASC';
+        $dir = $presort['desc']=='true' ? 'DESC' : 'ASC';
     }
 
     $filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
     $sort = my_mysqli_real_escape_string($sort);
     $dir = my_mysqli_real_escape_string($dir);
     // GridFilters sends filters as an Array if not json encoded
-
-    // if ($sort != "") {     
-        // var_dump($sort);
-        $query .= " ORDER BY `" . $sort . "` " . $dir;
-    // } else {
-    // $query .= " ORDER BY `date` DESC ";
-    // }
-
-    $query .= " LIMIT $start, $count";
-
-
 
     if (is_array($filters)) {
         $encoded = false;
@@ -453,7 +442,14 @@ if (!empty($_GET['id'])) {
     $queryTotal = "SELECT COUNT(id) AS obzvon_total FROM staff_order WHERE country IN (" . $_SESSION['country'] . ") $all_in_condition AND $where $str_add";
     $queryTotal = "SELECT FOUND_ROWS() AS obzvon_total ";
 
+    // if ($sort != "") {     
+    // var_dump($sort);
+    $query .= " ORDER BY `" . $sort . "` " . $dir;
+    // } else {
+    // $query .= " ORDER BY `date` DESC ";
+    // }
 
+    $query .= " LIMIT $start, $count";
 
     ApiLogger::addLogVarExport('START');
     ApiLogger::addLogVarExport($query);
