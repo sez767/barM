@@ -435,12 +435,13 @@ if (!empty($_GET['id'])) {
 
     $queryTotal = "SELECT COUNT(id) AS obzvon_total FROM staff_order WHERE country IN (" . $_SESSION['country'] . ") $all_in_condition AND $where $str_add";
     $queryTotal = "SELECT FOUND_ROWS() AS obzvon_total ";
-// sort=[{"selector":"id","desc":false}]
-   if ($sort != "") {
-        $query .= " ORDER BY `" . $sort . "` " . $dir;
-    }
 
-    // $query .= " ORDER BY `date` DESC ";
+   /* if ($sort != "") {
+        $query .= " ORDER BY `" . $sort . "` " . $dir;
+    } else {
+        
+    }*/
+    $query .= " ORDER BY `date` DESC ";
     $query .= " LIMIT $start, $count";
 
     ApiLogger::addLogVarExport('START');

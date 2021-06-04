@@ -8,12 +8,7 @@ ini_set('ignore_repeated_errors', 'On');
 session_start();
 
 
-// require_once dirname(__FILE__) . '/../ini/Application.php';
-// require_once dirname(__FILE__) . '("/../DevExtreme/LoadHelper.php")';
-// spl_autoload_register(array("DevExtreme\LoadHelper", "LoadModule"));
-
-// use DevExtreme\DbSet;
-// use DevExtreme\DataSourceLoader;
+require_once dirname(__FILE__) . '/../ini/Application.php';
 
 function db_connect() {
     global $db_link_ref;
