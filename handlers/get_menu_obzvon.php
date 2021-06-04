@@ -255,8 +255,6 @@ if (!empty($_GET['id'])) {
         $sort = isset($presort['selector']) ? $presort['selector'] : '';
         $dir = ($presort['desc']) ? 'DESC' : 'ASC';
     }
-    
-    var_dump($sort);
 
     $filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
     $sort = my_mysqli_real_escape_string($sort);
@@ -443,7 +441,8 @@ if (!empty($_GET['id'])) {
     $queryTotal = "SELECT COUNT(id) AS obzvon_total FROM staff_order WHERE country IN (" . $_SESSION['country'] . ") $all_in_condition AND $where $str_add";
     $queryTotal = "SELECT FOUND_ROWS() AS obzvon_total ";
 
-   if ($sort != "") {
+   if ($sort != "") {     
+        var_dump($sort);
         $query .= " ORDER BY `" . $sort . "` " . $dir;
     } else {
     $query .= " ORDER BY `date` DESC ";
