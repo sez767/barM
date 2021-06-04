@@ -253,7 +253,7 @@ if (!empty($_GET['id'])) {
     if(isset($_REQUEST['sort'])) {
         $presort = json_decode($_REQUEST['sort'], true);
         $sort = isset($presort['selector']) ? $presort['selector'] : '';
-        $dir = ($presort['desc']) ? 'DESC' : 'ASC';
+        $dir = ($presort['desc']=='true') ? 'DESC' : 'ASC';
     }
 
     $filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
