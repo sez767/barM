@@ -29,6 +29,18 @@ $(function() {
         paging: {
             pageSize: 10
         },
+        filterRow: {
+            visible: true,
+            applyFilter: "auto"
+        },
+        searchPanel: {
+            visible: true,
+            width: 240,
+            placeholder: "Search..."
+        },
+        headerFilter: {
+            visible: true
+        },
         pager: {
             showPageSizeSelector: true,
             allowedPageSizes: [10, 25, 50, 100]
