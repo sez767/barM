@@ -255,8 +255,7 @@ if (!empty($_GET['id'])) {
         // var_dump($presort);
         $sort = $presort['selector'];
         //  ? $presort['selector'] : 'date';
-        $dir = $presort['desc'];
-        //  ? 'DESC' : 'ASC';
+        $dir = ($presort['desc']=="true") ? 'DESC' : 'ASC';
     }
     
     $filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
