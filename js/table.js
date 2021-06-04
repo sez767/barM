@@ -1,23 +1,49 @@
 DevExpress.localization.locale(navigator.language);
 $(function() {
     $("#gridCon").dxDataGrid({
-        dataSource: DevExpress.data.AspNet.createStore({
-            key: "id",
-            loadUrl: "/handlers/get_menu_obzvon.php"
-        }),
-        remoteOperations: true,
-        scrolling: {
-            mode: "virtual",
-            rowRenderingMode: "virtual"
+        // dataSource: DevExpress.data.AspNet.createStore({
+        //     key: "id",
+        //     loadUrl: "/handlers/get_menu_obzvon.php"
+        // }),
+        // remoteOperations: true,
+        // scrolling: {
+        //     mode: "virtual",
+        //     rowRenderingMode: "virtual"
+        // },
+        // paging: {
+        //     pageSize: 25
+        // },
+        // headerFilter: {
+        //     visible: true,
+        //     allowSearch: true
+        // },
+        // wordWrapEnabled: true,
+        // showBorders: true,
+        dataSource: {
+            store: {
+                type: "odata",
+                url: "/handlers/get_menu_obzvon.php",
+               
+            }
         },
         paging: {
-            pageSize: 25
+            pageSize: 10
         },
-        headerFilter: {
+        pager: {
+            showPageSizeSelector: true,
+            allowedPageSizes: [10, 25, 50, 100]
+        },
+        remoteOperations: false,
+        searchPanel: {
             visible: true,
-            allowSearch: true
+            highlightCaseSensitive: true
         },
-        wordWrapEnabled: true,
+        groupPanel: { visible: true },
+        grouping: {
+            autoExpandAll: false
+        },
+        allowColumnReordering: true,
+        rowAlternationEnabled: true,
         showBorders: true,
         columns: [{
             dataField: "id",
