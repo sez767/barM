@@ -245,15 +245,17 @@ if (!empty($_GET['id'])) {
     ));
 } else {
     $dobrikUseWhere = false;
-
+    $sort = '';
+    $dir = 'DESC';
     // collect request parameters
     $start = (int) isset($_REQUEST['skip']) ? $_REQUEST['skip'] : 0;
     $count = (int) isset($_REQUEST['take']) ? $_REQUEST['take'] : 100;
     if(isset($_REQUEST['sort'])) {
         $presort = json_decode($_REQUEST['sort']), true);
-    }
-    $sort = isset($presort['selector']) ? $presort['selector'] : '';
+        $sort = isset($presort['selector']) ? $presort['selector'] : '';
     $dir = ($presort['desc']) ? 'DESC' : 'ASC';
+    }
+    
     // var_dump($sort);
     $filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
     $sort = my_mysqli_real_escape_string($sort);
