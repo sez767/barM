@@ -5,7 +5,8 @@ body{
   background-color: rgb(215, 215, 215);
 }
 #toolbar {
-  background: linear-gradient(90deg, rgba(220, 246, 255, 0.608) 0%, rgba(0,182,255,1) 100%);
+  background: rgba(220, 246, 255, 0.608);
+  background: linear-gradient(90deg, rgba(220, 246, 255, 0.608) 30%, rgba(0,182,255,1) 100%);
   padding: 5px 10px;
   box-shadow: 250px 5px 41px -2px rgba(34, 60, 80, 0.2);
 }
