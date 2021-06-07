@@ -41,8 +41,7 @@ $(function() {
         columns: [{
             dataField: "id",
             caption: "ID",
-            width: 100,
-            headerFilter:{none} 
+            width: 100, 
         }, {
             dataField: "fio",
             caption: "ФИО",
