@@ -31,49 +31,6 @@ $(function() {
         headerFilter: {
             visible: true
         },
-
-
-        // dataSource: {
-        //     store: {
-        //         type: "odata",
-        //         url: "/handlers/get_menu_obzvon.php",
-        //     }
-        // },
-        // paging: {
-        //     pageSize: 10
-        // },
-        // filterRow: {
-        //     visible: true,
-        //     applyFilter: "auto"
-        // },
-        // searchPanel: {
-        //     visible: true,
-        //     width: 240,
-        //     placeholder: "Search..."
-        // },
-        // headerFilter: {
-        //     visible: true
-        // },
-        // pager: {
-        //     showPageSizeSelector: true,
-        //     allowedPageSizes: [10, 25, 50, 100]
-        // },
-        // remoteOperations: false,
-        // searchPanel: {
-        //     visible: true,
-        //     highlightCaseSensitive: true
-        // },
-        // groupPanel: { visible: true },
-        // grouping: {
-        //     autoExpandAll: false
-        // },
-        // allowColumnReordering: true,
-        // rowAlternationEnabled: true,
-        // showBorders: true,
-
-
-
-
         columns: [{
             dataField: "id",
             caption: "ID",

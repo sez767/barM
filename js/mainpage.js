@@ -22,7 +22,7 @@ $(function() {
         template: function() {
             const $list = $("<div/>").dxList({
                 items: [
-                    { id: 1, text: "Главная", icon: "fas fa-home", filePath: "main" },
+                    { id: 1, text: "Главная", icon: "home", filePath: "main" },
                     { id: 2, text: "Таблица", icon: "verticalaligntop", filePath: "table" },
    
                 ],
@@ -30,7 +30,6 @@ $(function() {
                 selectionMode: "single",
                 onSelectionChanged: function(e) {
                     $("#view").load( "./pages/" + e.addedItems[0].filePath + ".html" );
-                    // drawer.hide();
                 }
             });
             return $list;
