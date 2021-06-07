@@ -22,8 +22,8 @@ $(function() {
         template: function() {
             const $list = $("<div/>").dxList({
                 items: [
-                    { id: 1, text: "Главная", icon: "check", filePath: "main" },
-                    { id: 2, text: "Таблица", icon: "message", filePath: "table" },
+                    { id: 1, text: "Главная", icon: "fas fa-home", filePath: "main" },
+                    { id: 2, text: "Таблица", icon: "verticalaligntop", filePath: "table" },
    
                 ],
                 width: 200,
