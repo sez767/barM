@@ -35,7 +35,7 @@ $(function() {
             dataField: "id",
             caption: "ID",
             width: 100,
-            headerFilter: none
+            headerFilter:{none} 
         }, {
             dataField: "fio",
             caption: "ФИО",
