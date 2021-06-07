@@ -15,7 +15,7 @@ $(function() {
     });
 
     const drawer = $("#drawer").dxDrawer({
-        minSize: 45,
+        minSize: 35,
         opened: true,
         revealMode: "expand",
         openedStateMode: "shrink",
@@ -26,7 +26,7 @@ $(function() {
                     { id: 2, text: "Таблица", icon: "verticalaligntop", filePath: "table" },
    
                 ],
-                width: 200,
+                width: 150,
                 selectionMode: "single",
                 onSelectionChanged: function(e) {
                     $("#view").load( "./pages/" + e.addedItems[0].filePath + ".html" );
