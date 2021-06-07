@@ -41,7 +41,7 @@ $(function() {
         columns: [{
             dataField: "id",
             caption: "ID",
-            width: 80, 
+            width: 100, 
         }, {
             dataField: "fio",
             caption: "ФИО",
@@ -51,7 +51,7 @@ $(function() {
             caption: "Статус",
             dataType: "number",
             width: 80,
-            hidingPriority: 3,
+            hidingPriority: 4,
         }, {
             dataField: "addr",
             caption: "Адрес",
@@ -65,7 +65,7 @@ $(function() {
             dataField: "date",
             caption: "Дата",
             dataType: "date",
-            hidingPriority: 4,
+            hidingPriority: 3,
             format: "dd-MM-yyyy",
         }]
     });
