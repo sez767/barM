@@ -56,10 +56,11 @@ $(function() {
             dataField: "addr",
             caption: "Адрес",
             hidingPriority: 1,
-            // width: 160
+            width: 300
         },{
             dataField: "country",
             caption: "Локация",
+            width: 80,
             hidingPriority: 2,
         },
         {
