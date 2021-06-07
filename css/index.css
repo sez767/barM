@@ -5,9 +5,7 @@ body{
   background-color: rgb(215, 215, 215);
 }
 #toolbar {
-  background: linear-gradient(-45deg, rgba(220, 246, 255 , 0.606), rgba(220, 246, 255 , 0.606), rgba(220, 246, 255 , 0.606), rgba(0, 190, 253, 0.606));
-  background-size: 400% 400%;
-  animation: gradient 25s ease infinite; 
+  background: linear-gradient(90deg, rgba(220, 246, 255, 0.608)) 0%, rgba(0,182,255,1) 100%);
   padding: 5px 10px;
   box-shadow: 250px 5px 41px -2px rgba(34, 60, 80, 0.2);
 }
@@ -26,7 +24,7 @@ body{
   margin-top: 10px;
 }
 .dx-drawer-panel-content{
-  background-color:rgba(220, 246, 255, 0.606);
+  background-color:rgba(220, 246, 255, 0.608);
 }
 #gridCon {
   height: 90vh;
@@ -47,15 +45,4 @@ body{
 }
 .dx-list-item-content{
   padding-left: 10px;
-}
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
 }
