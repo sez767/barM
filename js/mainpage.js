@@ -38,6 +38,8 @@ $(function() {
     }).dxDrawer("instance");
 
     const width  = $(window).width();
-    if(width < 600){drawer.hide()}
+    if(width < 600){
+        drawer.hide();
+    }
 
 }); 
