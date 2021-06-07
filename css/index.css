@@ -2,7 +2,9 @@ body{
   margin: 0;
 }
 .dx-overlay-content {
-  background-color: rgb(215, 215, 215);
+  background: linear-gradient(-45deg, #1575b1, rgba(220, 246, 255 , 0.606), #23a6d5, rgba(220, 246, 255 , 0.606));
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 #toolbar {
   background: linear-gradient(-45deg, #1575b1, rgba(220, 246, 255 , 0.606), #23a6d5, rgba(220, 246, 255 , 0.606));
