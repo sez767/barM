@@ -51,7 +51,7 @@ $(function() {
             caption: "Статус",
             dataType: "number",
             width: 80,
-            hidingPriority: 4,
+            hidingPriority: 1,
         }, {
             dataField: "addr",
             caption: "Адрес",
