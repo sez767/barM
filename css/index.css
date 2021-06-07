@@ -5,7 +5,7 @@ body{
   background-color: rgb(215, 215, 215);
 }
 #toolbar {
-  background: linear-gradient(-45deg, rgba(220, 246, 255 , 0.606), rgba(220, 246, 255 , 0.606), #23a6d5, rgba(220, 246, 255 , 0.606));
+  background: linear-gradient(-45deg, rgba(220, 246, 255 , 0.606), rgba(220, 246, 255 , 0.606), rgba(220, 246, 255 , 0.606), rgba(0, 190, 253, 0.606));
   background-size: 400% 400%;
   animation: gradient 25s ease infinite; 
   padding: 5px 10px;
