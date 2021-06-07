@@ -51,11 +51,11 @@ $(function() {
             caption: "Статус",
             dataType: "number",
             width: 80,
-            hidingPriority: 1,
+            hidingPriority: 4,
         }, {
             dataField: "addr",
             caption: "Адрес",
-            hidingPriority: 3,
+            hidingPriority: 1,
             width: 160
         },{
             dataField: "country",
