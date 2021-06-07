@@ -50,7 +50,7 @@ $(function() {
             dataField: "status",
             caption: "Статус",
             dataType: "number",
-            width: 80,
+            width: 100,
             hidingPriority: 4,
         }, {
             dataField: "addr",
@@ -60,7 +60,7 @@ $(function() {
         },{
             dataField: "country",
             caption: "Локация",
-            width: 80,
+            width: 100,
             hidingPriority: 2,
         },
         {
