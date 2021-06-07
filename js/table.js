@@ -41,21 +41,27 @@ $(function() {
         columns: [{
             dataField: "id",
             caption: "ID",
-            width: 100, 
+            width: 80, 
         }, {
             dataField: "fio",
             caption: "ФИО",
-            width: 200
+            width: 160
         }, {
             dataField: "status",
             caption: "Статус",
             dataType: "number",
-            width: 100
+            width: 80,
+            hidingPriority: 3,
         }, {
-            dataField: "phone",
-            caption: "Телефон",
-            dataType: "number",
+            dataField: "addr",
+            caption: "Адрес",
+            hidingPriority: 2,
         },{
+            dataField: "country",
+            caption: "Локация",
+            hidingPriority: 2,
+        },
+        {
             dataField: "date",
             caption: "Дата",
             dataType: "date",
