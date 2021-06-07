@@ -208,7 +208,7 @@ if ($_SESSION['whatsappoperator'] && isset($_COOKIE['WhatsAppDialogs'])){
         <title>BaribardaLite cabinet</title>
 
         <link rel="stylesheet" type="text/css" href="css/dx.common.css">
-        <link rel="stylesheet" type="text/css" href="css/dx.material.teal.light.css">
+        <link rel="stylesheet" type="text/css" href="dx.material.blue.light.compact.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
 
         <script type="text/javascript" src="js/jquery.js"></script>
