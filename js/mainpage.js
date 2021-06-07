@@ -13,12 +13,6 @@ $(function() {
             }
         }]
     });
-    // window.onload = function () {
-        const width  = $(window).width();
-        console.log('111', width);
-    // };
-    
-    // if(width < 600){drawer.hide()}
 
     const drawer = $("#drawer").dxDrawer({
         minSize: 45,
@@ -42,5 +36,8 @@ $(function() {
             return $list;
         }
     }).dxDrawer("instance");
+
+    const width  = $(window).width();
+    if(width < 600){drawer.hide()}
 
 }); 
