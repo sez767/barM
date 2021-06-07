@@ -26,7 +26,7 @@ $(function() {
         searchPanel: {
             visible: true,
             width: 240,
-            placeholder: "Search..."
+            placeholder: "Поиск..."
         },
         headerFilter: {
             visible: true
@@ -34,7 +34,8 @@ $(function() {
         columns: [{
             dataField: "id",
             caption: "ID",
-            width: 100
+            width: 100,
+            headerFilter: none
         }, {
             dataField: "fio",
             caption: "ФИО",
