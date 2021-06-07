@@ -31,6 +31,13 @@ $(function() {
         headerFilter: {
             visible: true
         },
+        onCellPrepared: function (e) {  
+            if (e.column.dataField === "id") {  
+                if (e.rowType == 'header') {  
+                    e.cellElement.find(".dx-header-filter").hide();  
+                }  
+            }  
+        },  
         columns: [{
             dataField: "id",
             caption: "ID",
