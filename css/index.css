@@ -27,18 +27,6 @@ body{
 .dx-drawer-panel-content{
   background-color:rgba(220, 246, 255, 0.608);
 }
-.dx-drawer-panel-content::after{
-    content: "";
-    position: absolute;
-    
-    background-color: transparent;
-    bottom: -50px;
-    height: 50px;
-    width: 25px;
-    border-top-left-radius: 25px;
-    box-shadow: 0 -25px 0 0 #F66969;
-
-}
 #gridCon {
   height: 90vh;
 }
