@@ -13,6 +13,12 @@ $(function() {
             }
         }]
     });
+    // window.onload = function () {
+        const width  = $(window).width();
+        console.log('111', width);
+    // };
+    
+    // if(width < 600){drawer.hide()}
 
     const drawer = $("#drawer").dxDrawer({
         minSize: 45,
@@ -27,7 +33,6 @@ $(function() {
    
                 ],
                 width: 200,
-                
                 selectionMode: "single",
                 onSelectionChanged: function(e) {
                     $("#view").load( "./pages/" + e.addedItems[0].filePath + ".html" );
