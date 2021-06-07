@@ -56,7 +56,7 @@ $(function() {
             dataField: "addr",
             caption: "Адрес",
             hidingPriority: 1,
-            width: 160
+            // width: 160
         },{
             dataField: "country",
             caption: "Локация",
