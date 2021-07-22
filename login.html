@@ -6,28 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Baribarda Lite Login</title>
   <link rel="stylesheet" href="css/login.css">
-
-  <script type="text/javascript">
-    function subForm() {
-        var username = document.getElementById('login__email').value;
-        var password = document.getElementById('login__password').value;
-        $.ajax({
-            type: 'POST',
-            url: 'index.php',
-            data: 'login=' + username + '&password=' + password,
-            beforeSend: function() {
-              $('#loader').show();
-            },
-            complete: function(){
-              $('#loader').hide();
-            },
-            // success: function (data) {
-            //     var redirect = '/mainpage.php';
-            //     window.location = redirect;
-            // }
-        });
+  <style>
+    .cartoon-container {
+      margin-bottom: 0;
     }
-  </script>
+  </style>
 
 </head>
 
@@ -154,7 +137,7 @@
       </svg>  
     </div>
 
-    
+    <div id='loader'><img src="images/spinner.gif" height="50" style="display:block; margin: 0 auto;" /></div>
     <form onSubmit="return false;" method="POST" class="form login">
       <div class="form__field form__field--email">
         <label class="label label--icon" for="login__email">
@@ -188,8 +171,9 @@
 
         <div class="form__field form__field--submit">
           <input onclick="subForm();" type="submit" value="Bойти">
+         
         </div>
-        <div id='loader'><img src="images/bg.png"/></div>
+        
       </div>
     </form>
 
@@ -207,6 +191,29 @@
   <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
   <script src="js/tween.min.js"></script>
   <script src="js/cartoon.js"></script>
+  <script type="text/javascript">
+    function subForm() {
+        var username = document.getElementById('login__email').value;
+        var password = document.getElementById('login__password').value;
+        $.ajax({
+            type: 'POST',
+            url: 'index.php',
+            data: 'login=' + username + '&password=' + password,
+            // success: function (data) {
+            //     var redirect = '/mainpage.php';
+            //     window.location = redirect;
+            // }
+        });
+    }
+    // var $loading = $('#loader').hide();
+    $(document)
+      .ajaxStart(function () {
+        $loading.show();
+      })
+      .ajaxStop(function () {
+        $loading.hide();
+      });
+  </script>
 
 </body>
 </html>
