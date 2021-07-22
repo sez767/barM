@@ -1,5 +1,15 @@
-<div>
+<script type="text/javascript" src="js/animatedtext.js"></script>
+<div id="text">
     <span>
         <h2>Welcome to Baribarda Lite</h2>
     </span>
 </div>
+
+<script>
+    new AnimatedText(document.getElementById("text"),["String","Other String","Text","Characters","More text","Example"],4000,50,function(){
+  var x=document.getElementById("text");
+  var p=x.parentElement;
+  p.removeChild(x);
+  p.appendChild(x);
+}); 
+</script>
