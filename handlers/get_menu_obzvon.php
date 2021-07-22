@@ -18,7 +18,7 @@ if (!isset($_SESSION['Logged_StaffId'])) {
 
 require_once dirname(__FILE__) . '/../lib/db.php';
 require_once dirname(__FILE__) . '/../lib/class.staff.php';
-// require_once("../../DevExtreme/LoadHelper.php");
+// require_once("../../DevExtreme/Utils.php");
 // spl_autoload_register(array("DevExtreme\LoadHelper", "LoadModule"));
 
 // use DevExtreme\DbSet;
@@ -257,9 +257,113 @@ if (!empty($_GET['id'])) {
     }
     
     $filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
+    
     $sort = my_mysqli_real_escape_string($sort);
     $dir = my_mysqli_real_escape_string($dir);
     // GridFilters sends filters as an Array if not json encoded
+
+    function getSimpleSqlExpr($expression) {
+        $result = "";
+        $itemsCount = count($expression);
+        $fieldName =trim($expression[0]);
+        if ($itemsCount == 2) {
+            $val = $expression[1];
+            $result = sprintf("%s = %s", $fieldName, $val);
+        }
+        else if ($itemsCount == 3) {
+            $clause = trim($expression[1]);
+            $val = $expression[2];
+            $pattern = "";
+            if (is_null($val)) {
+                $pattern = "%s %s %s";
+                switch ($clause){
+                    case "=": {
+                        $clause = "IS";
+                        break;
+                    }
+                    case "<>": {
+                        $clause = "IS NOT";
+                        break;
+                    }
+                }
+            }
+            else {
+                switch ($clause) {
+                    case "=":
+                    case "<>":
+                    case ">":
+                    case ">=":
+                    case "<":
+                    case "<=": {
+                        $pattern = "%s %s '%s'";
+                        $val = addcslashes($val, "%_");
+                        break;
+                    }
+                    case "startswith": {
+                        $pattern = "%s %s '%s%%'";
+                        $clause = "LIKE";
+                        $val = addcslashes($val, "%_");
+                        break;
+                    }
+                    case "endswith": {
+                        $pattern = "%s %s '%%%s'";
+                        $val = addcslashes($val, "%_");
+                        $clause = "LIKE";
+                        break;
+                    }
+                    case "contains": {
+                        $pattern = "%s %s '%%%s%%'";
+                        $val = addcslashes($val, "%_");
+                        $clause = "LIKE";
+                        break;
+                    }
+                    case "notcontains": {
+                        $pattern = "%s %s '%%%s%%'";
+                        $val = addcslashes($val, "%_");
+                        $clause = sprintf("%s %s", "NOT", "LIKE");
+                        break;
+                    }
+                    default: {
+                        $clause = "";
+                    }
+                }
+            }
+            $result = sprintf($pattern, $fieldName, $clause, $val);
+        }
+        // var_dump($result);
+        return $result;
+    }
+    function getSqlExprByArray($expression) {
+        $result = "(";
+        $prevItemWasArray = false;
+        foreach ($expression as $index => $item) {
+            if (is_string($item)) {
+                $prevItemWasArray = false;
+                if ($index == 0) {
+				    if ($item == "!") {
+                        $result .= sprintf("%s ", "NOT");
+						continue;
+                    }
+					$result .=  (isset($expression) && is_array($expression)) ? getSimpleSqlExpr($expression) : "";
+					break;
+                }
+				$strItem = strtoupper(trim($item));
+                if ($strItem == "AND" || $strItem == "OR") {
+                    $result .= sprintf(" %s ", $strItem);
+                }
+                continue;
+            }
+            if (is_array($item)) {
+                if ($prevItemWasArray) {
+                    $result .= sprintf(" %s ", "AND");
+                }
+                $result .= getSqlExprByArray($item);
+                $prevItemWasArray = true;
+            }
+        }
+        $result .= ")";
+        return $result;
+    }
 
     if (is_array($filters)) {
         $encoded = false;
@@ -272,109 +376,126 @@ if (!empty($_GET['id'])) {
     $qs = '';
     // loop through filters sent by client
     if (is_array($filters)) {
-        for ($i = 0; $i < count($filters); $i++) {
-            $filter = $filters[$i];
-            // assign filter data (location depends if encoded or not)
-            if ($encoded) {
-                $field = $filter->field;
-                $value = $filter->value;
-                $compare = isset($filter->comparison) ? $filter->comparison : null;
-                $filterType = $filter->type;
-            } else {
-                $field = $filter['field'];
-                $value = $filter['data']['value'];
-                $compare = isset($filter['data']['comparison']) ? $filter['data']['comparison'] : null;
-                $filterType = $filter['data']['type'];
-            }
-            $field = my_mysqli_real_escape_string($field);
-            $value = my_mysqli_real_escape_string($value);
-            $compare = my_mysqli_real_escape_string($compare);
-            $filterType = my_mysqli_real_escape_string($filterType);
-
-            if (stripos($field, 'date') !== false) {
-                $dobrikUseWhere = true;
-            }
-
-            if ($field == 'offer_groups') {
-                $ofGroupsArr = explode(',', $value);
-                $ofGroupInArr = array();
-                foreach ($ofGroupsArr as $groupItem) {
-                    $ofGroupInArr = array_merge($ofGroupInArr, $GLOBAL_GROUP_OFFER[$groupItem]);
-                }
-                $where .= " AND offer IN ('" . implode("', '", $ofGroupInArr) . "')";
-                continue;
-            } else if ($field == 'id' && strpos($value, ' ') === false) {
-                $filterType = 'numeric';
-                $compare = 'eq';
-            }
-
-            switch ($filterType) {
-                case 'string':
-                    $value = trim($value);
-
-                    if (in_array($field, array('id', 'card_number'))) {
-                        $tmpIds = explode(' ', $value);
-                        $tmpIds[] = -1;
-                        $tmpIds = array_diff($tmpIds, array(''));
-                        $qs .= " AND `$field` IN ('" . implode("','", $tmpIds) . "')";
-                    } else {
-                        $qs .= " AND `$field` LIKE '" . $value . "%'";
-                    }
-                    Break;
-                case 'list':
-                    if (in_array($field, array('staff_id', 'staff_id_orig')) && $value == -1) {
-                        $qs .= " AND staff_id NOT IN (22222222, 33333333, 55555555) ";
-                        Break;
-                    }
-                    if (in_array($field, array('staff_id', 'staff_id_orig')) && $value == -2) {
-                        $qs .= " AND staff_id IN (97979449 , 93991201, 93375132, 90871721, 91318760, 95873538, 99171796, 47369504, 57369831, 11111111, 33333333, 32818339, 78017798, 49152384, 48514518, 71171003, 48061934, 45033811, 42655111, 20217943, 47063460, 36481874, 31769332, 22222222, 55555555, 55557777, 55556666) ";
-                        Break;
-                    }
-
-                    if (strstr($value, ',')) {
-                        $fi = explode(',', $value);
-                        for ($q = 0; $q < count($fi); $q++) {
-                            $fi[$q] = "'" . $fi[$q] . "'";
-                        }
-                        $value = implode(',', $fi);
-                        $qs .= " AND `" . $field . "` IN (" . $value . ")";
-                    } else {
-                        $qs .= " AND `" . $field . "` = '" . $value . "'";
-                    }
-                    Break;
-                case 'boolean':
-                    $qs .= " AND " . $field . " = " . ($value);
-                    Break;
-                case 'numeric':
-                    switch ($compare) {
-                        case 'eq':
-                            $qs .= " AND " . $field . " = " . $value;
-                            Break;
-                        case 'lt':
-                            $qs .= " AND " . $field . " < " . $value;
-                            Break;
-                        case 'gt':
-                            $qs .= " AND " . $field . " > " . $value;
-                            Break;
-                    }
-                    Break;
-                case 'date':
-                    switch ($compare) {
-                        case 'eq':
-                            $qs .= " AND " . $field . " >= '" . $value . "' AND " . $field . " <= '" . substr($value, 0, 10) . " 23:59:59'";
-                            Break;
-                        case 'lt':
-                            $qs .= " AND " . $field . " <= '" . substr($value, 0, 10) . " 23:59:59'";
-                            Break;
-                        case 'gt':
-                            $qs .= " AND " . $field . " >= '" . $value . "'";
-                            Break;
-                    }
-                    Break;
-            }
+        
+        if(! is_array($filters[0])){ //single filter
+            $res = getSimpleSqlExpr($filters);
+            $where .= " AND " . $res;
+            // var_dump($where);
+        }else{
+            $res = getSqlExprByArray($filters);
+            $where .= " AND " . $res;
         }
-        $where .= $qs;
-    }
+        
+    }    
+        // $where .= " AND `" . $field . "` = '" . $value . "'";
+
+        // }
+        // $where .= $qs;
+
+        // for ($i = 0; $i < count($filters); $i++) {
+        //     $filter = $filters[$i];
+            
+        //     // assign filter data (location depends if encoded or not)
+        //     if ($encoded) {
+        //         $field = $filter->field;
+        //         $value = $filter->value;
+        //         $compare = isset($filter->comparison) ? $filter->comparison : null;
+        //         $filterType = $filter->type;
+        //     } else {
+        //         $field = $filter['field'];
+        //         $value = $filter['data']['value'];
+        //         $compare = isset($filter['data']['comparison']) ? $filter['data']['comparison'] : null;
+        //         $filterType = $filter['data']['type'];
+        //     }
+        //     $field = my_mysqli_real_escape_string($field);
+        //     $value = my_mysqli_real_escape_string($value);
+        //     $compare = my_mysqli_real_escape_string($compare);
+        //     $filterType = my_mysqli_real_escape_string($filterType);
+
+        //     if (stripos($field, 'date') !== false) {
+        //         $dobrikUseWhere = true;
+        //     }
+
+        //     if ($field == 'offer_groups') {
+        //         $ofGroupsArr = explode(',', $value);
+        //         $ofGroupInArr = array();
+        //         foreach ($ofGroupsArr as $groupItem) {
+        //             $ofGroupInArr = array_merge($ofGroupInArr, $GLOBAL_GROUP_OFFER[$groupItem]);
+        //         }
+        //         $where .= " AND offer IN ('" . implode("', '", $ofGroupInArr) . "')";
+        //         continue;
+        //     } else if ($field == 'id' && strpos($value, ' ') === false) {
+        //         $filterType = 'numeric';
+        //         $compare = 'eq';
+        //     }
+
+        //     switch ($filterType) {
+        //         case 'string':
+        //             $value = trim($value);
+
+        //             if (in_array($field, array('id', 'card_number'))) {
+        //                 $tmpIds = explode(' ', $value);
+        //                 $tmpIds[] = -1;
+        //                 $tmpIds = array_diff($tmpIds, array(''));
+        //                 $qs .= " AND `$field` IN ('" . implode("','", $tmpIds) . "')";
+        //             } else {
+        //                 $qs .= " AND `$field` LIKE '" . $value . "%'";
+        //             }
+        //             Break;
+        //         case 'list':
+        //             if (in_array($field, array('staff_id', 'staff_id_orig')) && $value == -1) {
+        //                 $qs .= " AND staff_id NOT IN (22222222, 33333333, 55555555) ";
+        //                 Break;
+        //             }
+        //             if (in_array($field, array('staff_id', 'staff_id_orig')) && $value == -2) {
+        //                 $qs .= " AND staff_id IN (97979449 , 93991201, 93375132, 90871721, 91318760, 95873538, 99171796, 47369504, 57369831, 11111111, 33333333, 32818339, 78017798, 49152384, 48514518, 71171003, 48061934, 45033811, 42655111, 20217943, 47063460, 36481874, 31769332, 22222222, 55555555, 55557777, 55556666) ";
+        //                 Break;
+        //             }
+
+        //             if (strstr($value, ',')) {
+        //                 $fi = explode(',', $value);
+        //                 for ($q = 0; $q < count($fi); $q++) {
+        //                     $fi[$q] = "'" . $fi[$q] . "'";
+        //                 }
+        //                 $value = implode(',', $fi);
+        //                 $qs .= " AND `" . $field . "` IN (" . $value . ")";
+        //             } else {
+        //                 $qs .= " AND `" . $field . "` = '" . $value . "'";
+        //             }
+        //             Break;
+        //         case 'boolean':
+        //             $qs .= " AND " . $field . " = " . ($value);
+        //             Break;
+        //         case 'numeric':
+        //             switch ($compare) {
+        //                 case 'eq':
+        //                     $qs .= " AND " . $field . " = " . $value;
+        //                     Break;
+        //                 case 'lt':
+        //                     $qs .= " AND " . $field . " < " . $value;
+        //                     Break;
+        //                 case 'gt':
+        //                     $qs .= " AND " . $field . " > " . $value;
+        //                     Break;
+        //             }
+        //             Break;
+        //         case 'date':
+        //             switch ($compare) {
+        //                 case 'eq':
+        //                     $qs .= " AND " . $field . " >= '" . $value . "' AND " . $field . " <= '" . substr($value, 0, 10) . " 23:59:59'";
+        //                     Break;
+        //                 case 'lt':
+        //                     $qs .= " AND " . $field . " <= '" . substr($value, 0, 10) . " 23:59:59'";
+        //                     Break;
+        //                 case 'gt':
+        //                     $qs .= " AND " . $field . " >= '" . $value . "'";
+        //                     Break;
+        //             }
+        //             Break;
+        //     }
+        // }
+        
+    
 
     if (empty($dobrikUseWhere)) {
         $where .= ' AND `date` > CURDATE() - INTERVAL 1 WEEK ';
@@ -442,9 +563,10 @@ if (!empty($_GET['id'])) {
     $queryTotal = "SELECT COUNT(id) AS obzvon_total FROM staff_order WHERE country IN (" . $_SESSION['country'] . ") $all_in_condition AND $where $str_add";
     $queryTotal = "SELECT FOUND_ROWS() AS obzvon_total ";
 
-
+    // $query .= " GROUP BY `country` ";
     $query .= " ORDER BY `" . $sort . "` " . $dir;
     $query .= " LIMIT $start, $count";
+    
 
     ApiLogger::addLogVarExport('START');
     ApiLogger::addLogVarExport($query);

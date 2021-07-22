@@ -2,16 +2,27 @@ $(function() {
     $("#view").load( "./pages/main.html" );
 
     $("#toolbar").dxToolbar({
-        items: [{
-            widget: "dxButton",
-            location: "before",
-            options: {
-                icon: "menu",
-                onClick: function() {
-                    drawer.toggle();
+        items: [
+            {
+                widget: "dxButton",
+                location: "before",
+                options: {
+                    icon: "menu",
+                    onClick: function() {
+                        drawer.toggle();
+                    }
+                }
+            },{
+                widget: "dxButton",
+                location: "after",
+                options: {
+                    icon: "close",
+                    onClick: function() {
+                        console.log("EXIT");
+                    }
                 }
             }
-        }]
+        ]
     });
 
     const drawer = $("#drawer").dxDrawer({

@@ -13,23 +13,25 @@ $(function() {
         paging: {
             pageSize: 100
         },
-        headerFilter: {
-            visible: true,
-            allowSearch: true
-        },
+        // headerFilter: {
+        //     visible: true,
+        // },
+        // grouping: {
+        //     contextMenuEnabled: true
+        // },
         wordWrapEnabled: true,
         showBorders: true,
         filterRow: {
             visible: true,
             applyFilter: "auto"
         },
+        sorting: {
+            mode: "single" // or "multiple" | "none"
+        },
         searchPanel: {
             visible: true,
             width: 240,
             placeholder: "Поиск..."
-        },
-        headerFilter: {
-            visible: true
         },
         onCellPrepared: function (e) {  
             if (e.column.dataField === "id") {  
@@ -41,25 +43,29 @@ $(function() {
         columns: [{
             dataField: "id",
             caption: "ID",
+            dataType: "number",
             width: 100, 
         }, {
             dataField: "fio",
             caption: "ФИО",
+            dataType: "string",
             width: 160
         }, {
             dataField: "status",
             caption: "Статус",
-            dataType: "number",
+            dataType: "string",
             width: 100,
             hidingPriority: 4,
         }, {
             dataField: "addr",
             caption: "Адрес",
+            dataType: "string",
             hidingPriority: 1,
             width: 300
         },{
             dataField: "country",
             caption: "Локация",
+            dataType: "string",
             width: 100,
             hidingPriority: 2,
         },
