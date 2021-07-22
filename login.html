@@ -199,13 +199,13 @@
             type: 'POST',
             url: 'index.php',
             data: 'login=' + username + '&password=' + password,
-            // success: function (data) {
-            //     var redirect = '/mainpage.php';
-            //     window.location = redirect;
-            // }
+            success: function (data) {
+                var redirect = '/mainpage.php';
+                window.location = redirect;
+            }
         });
     }
-    // var $loading = $('#loader').hide();
+    var $loading = $('#loader').hide();
     $(document)
       .ajaxStart(function () {
         $loading.show();
