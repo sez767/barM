@@ -206,21 +206,23 @@ if ($_SESSION['whatsappoperator'] && isset($_COOKIE['WhatsAppDialogs'])){
 <html>
     <head>
         <title>BaribardaLite cabinet</title>
-
+        <meta meta name="viewport" content="width=device-width, user-scalable=yes" />
         <link rel="stylesheet" type="text/css" href="css/dx.common.css">
         <link rel="stylesheet" type="text/css" href="css/dx.material.blue.light.compact.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-
+        
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/dx.all.js"></script>
-        <!-- <script type="text/javascript" src="js/dx.messages.ru.js"></script> -->
+        <script type="text/javascript" src="js/dx.messages.ru.js"></script>
         <script type="text/javascript" src="js/mainpage.js"></script>
         <script src="https://unpkg.com/devextreme-aspnet-data/js/dx.aspnet.data.js"></script>
+        <!-- <script src="https://cdn3.devexpress.com/jslib/21.1.4/js/localization/dx.messages.ru.js"></script> -->
     </head>
-    <body class="dx-viewport">
-        <div class="demo-container">
-        <div id="toolbar"></div>
-        <div id="drawer">
+    <body class="dx-viewport" style="height: 100vh">
+        <div class="demo-container" style="height: 100vh">
+            <div style="padding: 14px 40px 0 0; color: white; text-align: right"><?php echo $_SESSION['FirstName'] ?>, SIP - <?php echo $_SESSION['Sip'] ?></div>
+        <div id="toolbar" style="margin-top: -34px;"></div>
+        <div id="drawer" >
             <div id="view"></div>
         </div>
         </div>

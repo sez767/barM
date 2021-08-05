@@ -1,15 +1,41 @@
 <script type="text/javascript" src="js/animatedtext.js"></script>
-<div id="text">
-    <span>
-        <h2>Welcome to Baribarda Lite</h2>
-    </span>
+<div id="textW">
+   Welcome to Baribarda
 </div>
 
 <script>
-    new AnimatedText(document.getElementById("text"),["String","Other String","Text","Characters","More text","Example"],4000,50,function(){
-  var x=document.getElementById("text");
-  var p=x.parentElement;
-  p.removeChild(x);
-  p.appendChild(x);
+  new AnimatedText(document.getElementById("textW"),["Welcome to Baribarda","Welcome to Baribarda Lite","Baribarda Very Lite","Baribarda Lite",
+  "Welcome to Baribarda Lite","Welcome to Baribarda Lite"],8000,50,function(){
+  var xxx=document.getElementById("textW");
+    if(xxx){
+      var p=xxx.parentElement;
+      p.removeChild(xxx);
+      p.appendChild(xxx); 
+    }
+  
 }); 
 </script>
+
+<style>
+#textW {
+  display: block;
+  text-align: center;
+  font-family: 'ForteLine';
+  font-size: 3em;
+  color: #78c9e4;
+  /* overflow: hidden; */
+  word-break: break-word;
+  line-height: 3em;
+  height: 4em;
+  text-shadow: 0 0 0.2em #c6eeff;
+  animation: glow 0.4s linear;
+}
+@media all and (max-width:50em){
+  #textW{
+    font-size: 5vw;
+  }
+}
+@keyframes glow{
+  15%{text-shadow: 0 0 0.2em #ffffff,0 0 0.6em #c6eeff,0 0 1em #a5d6eb}
+}
+</style>
